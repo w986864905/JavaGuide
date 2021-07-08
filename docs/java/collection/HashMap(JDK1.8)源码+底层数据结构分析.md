@@ -122,7 +122,7 @@ public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneabl
 
 - **threshold**
 
-  **threshold = capacity \* loadFactor**，**当 Size>=threshold**的时候，那么就要考虑对数组的扩增了，也就是说，这个的意思就是 **衡量数组是否需要扩增的一个标准**。
+  **threshold = capacity \* loadFactor**，**当 Size>threshold**的时候，那么就会进行对数组的扩增了，也就是说，这个的意思就是 **衡量数组是否需要扩增的一个标准**。
 
 **Node 节点类源码:**
 
@@ -329,7 +329,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
             if (!onlyIfAbsent || oldValue == null)
                 //用新值替换旧值
                 e.value = value;
-            // 访问后回调
+            // 将节点移动到最后
             afterNodeAccess(e);
             // 返回旧值
             return oldValue;
