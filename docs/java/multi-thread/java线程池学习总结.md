@@ -577,10 +577,11 @@ public interface Callable<V> {
 - **`shutdown（）`** :关闭线程池，线程池的状态变为 `SHUTDOWN`。线程池不再接受新任务了，但是队列里的任务得执行完毕。
 - **`shutdownNow（）`** :关闭线程池，线程的状态变为 `STOP`。线程池会终止当前正在运行的任务，并停止处理排队的任务并返回正在等待执行的 List。
 
-#### 4.3.2 `isTerminated()` VS `isShutdown()`
+#### 4.3.2 `isTerminated()` VS `isShutdown()` VS `isTerminating`
 
-- **`isShutDown`** 当调用 `shutdown()` 方法后返回为 true。
-- **`isTerminated`** 当调用 `shutdown()` 方法后，并且所有提交的任务完成后返回为 true
+- **`isShutDown`** 当调用 `shutdown()`或`shutdownNow()` 方法后返回为 true。
+- **`isTerminated`** 当调用 `shutdown()`或`shutdownNow()`方法后，并且所有提交的任务完成后返回为 true
+- **`isTerminating`** 如果此执行程序在 `shutdown()`或`shutdownNow()` 方法后正在终止但尚未完全终止，则返回 true。
 
 ### 4.4 加餐:`Callable`+`ThreadPoolExecutor`示例代码
 
